@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.138
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autocomplete.DAL", "Autocomplete.DAL\Autocomplete.DAL.csproj", "{0343A0E7-3806-4435-8958-7B7984BC0072}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autocomplete.DAL", "Autocomplete.Generic\Autocomplete.DAL\Autocomplete.DAL.csproj", "{0343A0E7-3806-4435-8958-7B7984BC0072}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autocomplete.ConsoleTest", "Autocomplete.ConsoleTest\Autocomplete.ConsoleTest.csproj", "{0171A7AE-3B15-453D-927A-8076DCB84C84}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{66725E29-B784-43EC-B662-1DF299B7875A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autocomplete.WindowUI.UI", "Autocomplete.WindowUI\Autocomplete.WindowUI.UI\Autocomplete.WindowUI.UI.csproj", "{5F2DD4CB-91E9-4D8B-92DC-805CFADCA185}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +19,14 @@ Global
 		{0343A0E7-3806-4435-8958-7B7984BC0072}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0343A0E7-3806-4435-8958-7B7984BC0072}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0343A0E7-3806-4435-8958-7B7984BC0072}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0171A7AE-3B15-453D-927A-8076DCB84C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0171A7AE-3B15-453D-927A-8076DCB84C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0171A7AE-3B15-453D-927A-8076DCB84C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0171A7AE-3B15-453D-927A-8076DCB84C84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66725E29-B784-43EC-B662-1DF299B7875A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66725E29-B784-43EC-B662-1DF299B7875A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66725E29-B784-43EC-B662-1DF299B7875A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66725E29-B784-43EC-B662-1DF299B7875A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F2DD4CB-91E9-4D8B-92DC-805CFADCA185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F2DD4CB-91E9-4D8B-92DC-805CFADCA185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F2DD4CB-91E9-4D8B-92DC-805CFADCA185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F2DD4CB-91E9-4D8B-92DC-805CFADCA185}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
