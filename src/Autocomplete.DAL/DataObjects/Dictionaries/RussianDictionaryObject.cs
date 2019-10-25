@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-
-namespace Autocomplete.DAL.DataObjects.Dictionaries
+﻿namespace Autocomplete.DAL.DataObjects.Dictionaries
 {
-    public class RussianDictionaryObject : IDictionary
+    public class RussianDictionaryObject : BaseDictionaryObject
     {
-        public List<WordObject> Words { get; set; }
+        public RussianDictionaryObject()
+        {
+            FilePath = Consts.RussianDictionaryFilePath;
+        }
     }
 }

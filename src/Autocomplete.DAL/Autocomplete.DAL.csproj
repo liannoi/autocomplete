@@ -43,14 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consts.cs" />
     <Compile Include="DataObjects\BaseObject.cs" />
+    <Compile Include="DataObjects\Dictionaries\BaseDictionaryObject.cs" />
     <Compile Include="DataObjects\IDictionary.cs" />
     <Compile Include="DataObjects\Dictionaries\RussianDictionaryObject.cs" />
     <Compile Include="DataObjects\WordObject.cs" />
     <Compile Include="DataServices\DataServices.cs" />
-    <Compile Include="DataServices\Dictionaries\IRussianDictionaryDataService.cs" />
-    <Compile Include="DataServices\File\BaseFileDataService.cs" />
-    <Compile Include="DataServices\Mock\BaseMockDataService.cs" />
+    <Compile Include="DataServices\BaseRussianDictionary.cs" />
+    <Compile Include="DataServices\File\RussianDictionaryDataService.cs" />
+    <Compile Include="DataServices\Mock\RussianDictionaryDataService.cs" />
+    <Compile Include="Helpers\BinarySerializationDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
