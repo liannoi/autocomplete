@@ -59,6 +59,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BL\BusinessObjects\FindSuggestionAsync.cs" />
+    <Compile Include="BL\BusinessObjects\SuggestionBusinessObject.cs" />
+    <Compile Include="BL\BusinessServices\RussianWordsSuggestionService.cs" />
     <Compile Include="BL\RelayCommand.cs" />
     <Compile Include="BL\ViewModels\BaseViewModel.cs" />
     <Compile Include="BL\ViewModels\DashboardViewModel.cs" />
@@ -99,6 +102,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Autocomplete.Generic\Autocomplete.DAL\Autocomplete.DAL.csproj">
+      <Project>{0343A0E7-3806-4435-8958-7B7984BC0072}</Project>
+      <Name>Autocomplete.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

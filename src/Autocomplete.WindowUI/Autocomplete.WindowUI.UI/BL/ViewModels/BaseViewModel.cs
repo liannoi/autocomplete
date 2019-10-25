@@ -20,6 +20,11 @@ namespace Autocomplete.WindowUI.UI.BL.ViewModels
             return GetCommand(propertyName) ?? SaveCommand(new RelayCommand(commandAction), propertyName);
         }
 
+        protected ICommand MakeCommand(Action<object> commandAction, Func<object, bool> func, [CallerMemberName] string propertyName = null)
+        {
+            return GetCommand(propertyName) ?? SaveCommand(new RelayCommand(commandAction, func), propertyName);
+        }
+
         private ICommand SaveCommand(ICommand command, string propertyName)
         {
             if (string.IsNullOrEmpty(propertyName))

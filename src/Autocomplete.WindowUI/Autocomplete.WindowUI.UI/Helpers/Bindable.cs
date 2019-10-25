@@ -12,14 +12,14 @@ namespace Autocomplete.WindowUI.UI.Helpers
 
         protected bool CallPropertyChangeEvent { get; set; } = true;
 
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         public Bindable()
         {
             _properties = new ConcurrentDictionary<string, object>();
+        }
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         protected T Get<T>(T defValue = default, [CallerMemberName] string name = null)
