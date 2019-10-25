@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29411.138
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autocomplete.DAL", "Autocomplete.DAL\Autocomplete.DAL.csproj", "{0343A0E7-3806-4435-8958-7B7984BC0072}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autocomplete.ConsoleTest", "Autocomplete.ConsoleTest\Autocomplete.ConsoleTest.csproj", "{0171A7AE-3B15-453D-927A-8076DCB84C84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0343A0E7-3806-4435-8958-7B7984BC0072}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0343A0E7-3806-4435-8958-7B7984BC0072}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0343A0E7-3806-4435-8958-7B7984BC0072}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0171A7AE-3B15-453D-927A-8076DCB84C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0171A7AE-3B15-453D-927A-8076DCB84C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0171A7AE-3B15-453D-927A-8076DCB84C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0171A7AE-3B15-453D-927A-8076DCB84C84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

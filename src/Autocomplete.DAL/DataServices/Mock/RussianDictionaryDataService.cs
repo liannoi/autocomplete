@@ -1,5 +1,4 @@
-﻿using Autocomplete.DAL.DataObjects.Dictionaries;
-using Autocomplete.DAL.Helpers;
+﻿using Autocomplete.DAL.Helpers;
 
 namespace Autocomplete.DAL.DataServices.Mock
 {
@@ -7,12 +6,18 @@ namespace Autocomplete.DAL.DataServices.Mock
     {
         public RussianDictionaryDataService()
         {
+            InitializeDictionary();
             Serialize();
         }
 
         private void Serialize()
         {
             Dictionary.Serialize();
+        }
+
+        private void InitializeDictionary()
+        {
+            Dictionary.AddRange(FileOperation.ReadByLine(Consts.ResourceRussainDictionaryFilePath));
         }
     }
 }

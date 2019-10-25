@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0343A0E7-3806-4435-8958-7B7984BC0072}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Autocomplete.DAL</RootNamespace>
-    <AssemblyName>Autocomplete.DAL</AssemblyName>
+    <ProjectGuid>{0171A7AE-3B15-453D-927A-8076DCB84C84}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Autocomplete.ConsoleTest</RootNamespace>
+    <AssemblyName>Autocomplete.ConsoleTest</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -21,16 +22,15 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -43,19 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Consts.cs" />
-    <Compile Include="DataObjects\BaseObject.cs" />
-    <Compile Include="DataObjects\Dictionaries\BaseDictionaryObject.cs" />
-    <Compile Include="DataObjects\IDictionary.cs" />
-    <Compile Include="DataObjects\Dictionaries\RussianDictionaryObject.cs" />
-    <Compile Include="DataObjects\WordObject.cs" />
-    <Compile Include="DataServices\DataServices.cs" />
-    <Compile Include="DataServices\BaseRussianDictionary.cs" />
-    <Compile Include="DataServices\File\RussianDictionaryDataService.cs" />
-    <Compile Include="DataServices\Mock\RussianDictionaryDataService.cs" />
-    <Compile Include="Helpers\BinarySerializationDictionary.cs" />
-    <Compile Include="Helpers\FileOperation.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Autocomplete.DAL\Autocomplete.DAL.csproj">
+      <Project>{0343A0E7-3806-4435-8958-7B7984BC0072}</Project>
+      <Name>Autocomplete.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

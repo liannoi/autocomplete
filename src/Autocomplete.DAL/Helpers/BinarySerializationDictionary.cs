@@ -16,7 +16,16 @@ namespace Autocomplete.DAL.Helpers
         public static void Serialize<TObject>(this TObject baseDictionary) where TObject : class
         {
             BaseDictionaryObject dictionary = baseDictionary as BaseDictionaryObject;
-            using FileStream stream = new FileStream(dictionary.FilePath, FileMode.Create, FileAccess.Write);
+            FileStream stream;
+            try
+            {
+                stream = new FileStream(dictionary.FilePath, FileMode.Create, FileAccess.Write);
+            }
+            catch (DirectoryNotFoundException)
+            {
+                Directory.CreateDirectory(Consts.DictionaryDirectoryName);
+                stream = new FileStream(dictionary.FilePath, FileMode.Create, FileAccess.Write);
+            }
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(stream, baseDictionary);
         }
