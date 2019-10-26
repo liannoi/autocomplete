@@ -1,23 +1,10 @@
-﻿using Autocomplete.DAL.Helpers;
-
-namespace Autocomplete.DAL.DataServices.Mock
+﻿namespace Autocomplete.DAL.DataServices.Mock
 {
-    public class RussianDictionaryDataService : BaseRussianDictionary
+    /// <summary>
+    /// This class is needed only for creating dictionaries in binary format.
+    /// He isn't inherited.
+    /// </summary>
+    public sealed class RussianDictionaryDataService : BaseRussianDictionary
     {
-        public RussianDictionaryDataService()
-        {
-            InitializeDictionary();
-            Serialize();
-        }
-
-        private void Serialize()
-        {
-            Dictionary.Serialize();
-        }
-
-        private void InitializeDictionary()
-        {
-            Dictionary.AddRange(FileOperation.ReadByLine(Consts.ResourceRussainDictionaryFilePath));
-        }
     }
 }
