@@ -1,4 +1,6 @@
-﻿using Autocomplete.DAL.DataObjects;
+﻿using Autocomplete.DAL;
+using Autocomplete.DAL.DataObjects;
+using Autocomplete.DAL.DataObjects.Dictionaries;
 using Autocomplete.DAL.DataServices;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,30 +13,24 @@ namespace Autocomplete.WindowUI.UI.BL.BusinessServices
 
         public RussianWordsSuggestionService()
         {
-            DataServices.Initialize(false);
             Suggestions = new List<string>();
         }
 
-        public void Find(string buffer, int count = 3)
+        public void Find(string buffer, int count = Consts.CountSuggestions)
         {
-            Clear();
+            Suggestions.Clear();
 
             IEnumerable<WordObject> collection = DataServices
-                .BaseRussianDictionary
+                .RussianDictionary
                 .Dictionary
                 .Words
-                .FindAll(w => w.Word.ToLowerInvariant().Contains(buffer.ToLowerInvariant()))
+                .FindAll(w => w.Word.ToLowerInvariant().Contains(buffer.ToLowerInvariant()) || w.Word.ToLowerInvariant() == buffer.ToLowerInvariant())
                 .Take(count);
 
             foreach (WordObject item in collection)
             {
                 Suggestions.Add(item.Word);
             }
-        }
-
-        public void Clear()
-        {
-            Suggestions.Clear();
         }
     }
 }

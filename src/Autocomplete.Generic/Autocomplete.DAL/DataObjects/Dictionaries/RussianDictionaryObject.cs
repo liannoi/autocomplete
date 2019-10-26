@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Autocomplete.DAL.DataObjects.Dictionaries
 {
@@ -37,6 +38,13 @@ namespace Autocomplete.DAL.DataObjects.Dictionaries
             {
                 Add(word);
             }
+        }
+
+        public void Distinct()
+        {
+            Words = Words
+                .Distinct()
+                .ToList();
         }
     }
 }

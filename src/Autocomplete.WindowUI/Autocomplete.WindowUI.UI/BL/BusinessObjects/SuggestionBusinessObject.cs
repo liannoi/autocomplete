@@ -9,7 +9,7 @@ namespace Autocomplete.WindowUI.UI.BL.BusinessObjects
         public bool HaveSuggestion
         {
             get => Word != null;
-            set {}
+            set { }
         }
 
         public string Word

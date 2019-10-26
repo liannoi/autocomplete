@@ -12,7 +12,7 @@ namespace Autocomplete.DAL.Helpers
             using StreamReader reader = new StreamReader(filePath);
             while ((line = reader.ReadLine()) != null)
             {
-                lines.Add(line);
+                lines.Add(line.Trim());
             }
             
             return lines;
