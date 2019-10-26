@@ -1,17 +1,14 @@
 ﻿using Autocomplete.WindowUI.UI.BL.BusinessObjects;
 using Autocomplete.WindowUI.UI.BL.BusinessServices;
-using System;
-using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
+using System.Threading;
 using System.Windows.Input;
 
 namespace Autocomplete.WindowUI.UI.BL.ViewModels
 {
-    public sealed class DashboardViewModel : BaseViewModel
+    public sealed partial class DashboardViewModel : BaseViewModel
     {
-        private IAsyncResult async;
         private readonly string buffer = string.Empty;
-        private readonly RussianWordsSuggestionService russianWordsSuggestionService;
+        private readonly int value;
 
         public string Buffer
         {
@@ -19,11 +16,11 @@ namespace Autocomplete.WindowUI.UI.BL.ViewModels
             set => Set(value);
         }
 
-        public SuggestionBusinessObject FirstSuggestion { get; set; }
-
-        public SuggestionBusinessObject SecondSuggestion { get; set; }
-
-        public SuggestionBusinessObject ThirdSuggestion { get; set; }
+        public int Value
+        {
+            get => Get(value);
+            set => Set(value);
+        }
 
         public ICommand ClearCommand => MakeCommand(a => ClearWindow(), c => !IsBufferEmpty());
 
@@ -35,31 +32,20 @@ namespace Autocomplete.WindowUI.UI.BL.ViewModels
             FirstSuggestion = new SuggestionBusinessObject();
             SecondSuggestion = new SuggestionBusinessObject();
             ThirdSuggestion = new SuggestionBusinessObject();
+            AsyncInitialize();
+            AsyncIncrement();
         }
 
-        private void AsyncFindSuggestions()
+        private bool IncrementValue()
         {
-            FindSuggestionAsync.FindSuggestionAsyncDelegate findSuggestion = russianWordsSuggestionService.Find;
-            async = findSuggestion.BeginInvoke(Buffer, 3, CallbackFindSuggestions, null);
-        }
-
-        private void CallbackFindSuggestions(IAsyncResult iAsyncResult)
-        {
-            AsyncResult asyncResult = iAsyncResult as AsyncResult;
-            FindSuggestionAsync.FindSuggestionAsyncDelegate caller = asyncResult.AsyncDelegate as FindSuggestionAsync.FindSuggestionAsyncDelegate;
-            caller.EndInvoke(iAsyncResult);
-
-            List<string> collection = russianWordsSuggestionService.Suggestions;
-            try
+            while (!asyncInitialize.IsCompleted)
             {
-                FirstSuggestion.Word = collection[0];
-                SecondSuggestion.Word = collection[1];
-                ThirdSuggestion.Word = collection[2];
+                Value++;
+                Thread.Sleep(500);
             }
-            catch (ArgumentOutOfRangeException)
-            {
-                return;
-            }
+
+            Value = 100;
+            return true;
         }
 
         private bool IsBufferEmpty()
