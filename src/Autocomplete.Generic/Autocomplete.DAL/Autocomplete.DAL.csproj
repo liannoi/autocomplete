@@ -44,13 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Consts.cs" />
-    <Compile Include="DataObjects\AddSuggestionAsync.cs" />
+    <Compile Include="DataObjects\Delegates\AddSuggestionAsync.cs" />
     <Compile Include="DataObjects\BaseObject.cs" />
     <Compile Include="DataObjects\Dictionaries\BaseDictionaryObject.cs" />
     <Compile Include="DataObjects\Dictionaries\IDictionary.cs" />
     <Compile Include="DataObjects\Dictionaries\RussianDictionaryObject.cs" />
-    <Compile Include="DataObjects\IncrementAsync.cs" />
-    <Compile Include="DataObjects\InitializeAsync.cs" />
+    <Compile Include="DataObjects\Delegates\IncrementAsync.cs" />
+    <Compile Include="DataObjects\Delegates\InitializeAsync.cs" />
     <Compile Include="DataObjects\Dictionaries\WordObject.cs" />
     <Compile Include="DataServices\BaseRussianDictionary.cs" />
     <Compile Include="DataServices\DataServices.cs" />

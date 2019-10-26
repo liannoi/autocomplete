@@ -4,12 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:model="clr-namespace:Autocomplete.WindowUI.UI.BL.ViewModels"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         Title="Autocomplete"
-        Height="200"
-        Width="400"
-        MinHeight="200"
-        MinWidth="400"
+        Height="300"
+        Width="500"
+        MinHeight="300"
+        MinWidth="500"
+        MaxHeight="300"
+        MaxWidth="740"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResizeWithGrip">
     <Window.Resources>
@@ -23,6 +26,7 @@
             <RowDefinition Height="2*" />
             <RowDefinition Height="3*" />
             <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" />
@@ -61,21 +65,45 @@
                    FontWeight="Medium"
                    Margin="5,5,0,0"
                    FontSize="13"
-                   Visibility="{Binding Path=FirstSuggestion.HaveSuggestion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                   Visibility="{Binding Path=FirstSuggestion.HaveSuggestion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown" >
+                        <i:InvokeCommandAction Command="{Binding FirstCorrectSuggestionCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Label>
             <Label Content="{Binding SecondSuggestion.Word, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                    Background="WhiteSmoke"
                    Foreground="DarkCyan"
                    FontWeight="Medium"
                    Margin="5,5,0,0"
                    FontSize="13"
-                   Visibility="{Binding Path=SecondSuggestion.HaveSuggestion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                   Visibility="{Binding Path=SecondSuggestion.HaveSuggestion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown" >
+                        <i:InvokeCommandAction Command="{Binding SecondCorrectSuggestionCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Label>
             <Label Content="{Binding ThirdSuggestion.Word, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                    Background="WhiteSmoke"
                    Foreground="DarkCyan"
                    FontWeight="Medium"
                    Margin="5,5,5,0"
                    FontSize="13"
-                   Visibility="{Binding Path=ThirdSuggestion.HaveSuggestion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                   Visibility="{Binding Path=ThirdSuggestion.HaveSuggestion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown" >
+                        <i:InvokeCommandAction Command="{Binding ThirdCorrectSuggestionCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Label>
         </StackPanel>
+        <ProgressBar Grid.Row="3"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="2"
+                     Margin="3"
+                     Width="340"
+                     Value="{Binding Value, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
     </Grid>
 </Window>
