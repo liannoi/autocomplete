@@ -14,7 +14,7 @@ namespace Autocomplete.WindowUI.UI.BL.BusinessServices
             Suggestions = new List<string>();
         }
 
-        public void Find(string buffer, int count = 3)
+        public void Find(string buffer, int count)
         {
             Suggestions.Clear();
 
@@ -29,6 +29,11 @@ namespace Autocomplete.WindowUI.UI.BL.BusinessServices
             {
                 Suggestions.Add(item.Word);
             }
+        }
+
+        public void Find(string buffer)
+        {
+            Find(buffer, 3);
         }
     }
 }

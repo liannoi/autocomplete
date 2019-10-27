@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace Autocomplete.WindowUI.UI.Helpers
 {
@@ -6,7 +7,7 @@ namespace Autocomplete.WindowUI.UI.Helpers
     {
         public static string ReplaceLastOccurrence(string source, string find, string replace)
         {
-            int place = source.LastIndexOf(find);
+            int place = source.LastIndexOf(find, StringComparison.InvariantCulture);
 
             if (place == -1)
             {

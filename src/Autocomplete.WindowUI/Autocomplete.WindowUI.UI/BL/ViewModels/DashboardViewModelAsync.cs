@@ -85,7 +85,7 @@ namespace Autocomplete.WindowUI.UI.BL.ViewModels
             }
             catch (InvalidOperationException)
             {
-                return;
+                // This block must be empty.
             }
         }
     }

@@ -6,7 +6,7 @@ namespace Autocomplete.DAL.DataServices
     {
         public RussianDictionaryObject Dictionary { get; protected set; }
 
-        public BaseRussianDictionary()
+        protected BaseRussianDictionary()
         {
             Dictionary = new RussianDictionaryObject();
         }
