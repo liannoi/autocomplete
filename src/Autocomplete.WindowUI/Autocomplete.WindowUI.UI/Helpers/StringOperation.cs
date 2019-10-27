@@ -9,12 +9,12 @@ namespace Autocomplete.WindowUI.UI.Helpers
         {
             if (string.IsNullOrWhiteSpace(source))
             {
-                throw new ArgumentException("message", nameof(source));
+                throw new ArgumentException("Inappropriate argument passed", nameof(source));
             }
 
             if (string.IsNullOrWhiteSpace(find))
             {
-                throw new ArgumentException("message", nameof(find));
+                throw new ArgumentException("Inappropriate argument passed", nameof(find));
             }
 
             int place = source.LastIndexOf(find, StringComparison.InvariantCulture);
@@ -29,6 +29,11 @@ namespace Autocomplete.WindowUI.UI.Helpers
 
         public static string LastWord(string source)
         {
+            if (string.IsNullOrWhiteSpace(source))
+            {
+                throw new ArgumentException("Inappropriate argument passed", nameof(source));
+            }
+
             string result = source.Split().Last();
             return result;
         }
