@@ -31,3 +31,7 @@ the correctness of the proposed words).
 
 **Standard way for solutions with WPF application.**
 
+## License
+
+The repository is licensed by [Apache-2.0](https://github.com/liannoi/autocomplete/blob/master/LICENSE).
+
