@@ -10,7 +10,7 @@ namespace Autocomplete.DAL.DataServices.Mock
     {
         public RussianDictionaryDataService()
         {
-            throw new NotImplementedException("The logic of this class isn't described.");
+            throw new NotSupportedException("The logic of this class isn't described.");
         }
     }
 }

@@ -7,8 +7,17 @@ namespace Autocomplete.WindowUI.UI.Helpers
     {
         public static string ReplaceLastOccurrence(string source, string find, string replace)
         {
-            int place = source.LastIndexOf(find, StringComparison.InvariantCulture);
+            if (string.IsNullOrWhiteSpace(source))
+            {
+                throw new ArgumentException("message", nameof(source));
+            }
 
+            if (string.IsNullOrWhiteSpace(find))
+            {
+                throw new ArgumentException("message", nameof(find));
+            }
+
+            int place = source.LastIndexOf(find, StringComparison.InvariantCulture);
             if (place == -1)
             {
                 return source;

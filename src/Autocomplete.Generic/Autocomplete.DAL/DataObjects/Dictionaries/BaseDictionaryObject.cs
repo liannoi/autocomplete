@@ -9,7 +9,7 @@ namespace Autocomplete.DAL.DataObjects.Dictionaries
     {
         public string FilePath { get; protected set; }
 
-        public List<WordObject> Words { get; set; }
+        public IEnumerable<WordObject> Words { get; protected set; }
 
         public int LastId
         {
