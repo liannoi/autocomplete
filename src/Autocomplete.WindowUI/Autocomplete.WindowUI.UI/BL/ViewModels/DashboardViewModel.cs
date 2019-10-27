@@ -1,4 +1,5 @@
-﻿using Autocomplete.WindowUI.UI.BL.BusinessObjects;
+﻿using Autocomplete.DAL;
+using Autocomplete.WindowUI.UI.BL.BusinessObjects;
 using Autocomplete.WindowUI.UI.BL.BusinessServices;
 using System.Threading;
 using System.Windows.Input;
@@ -41,7 +42,7 @@ namespace Autocomplete.WindowUI.UI.BL.ViewModels
             while (!asyncInitialize.IsCompleted)
             {
                 Value++;
-                Thread.Sleep(500);
+                Thread.Sleep(Consts.SleepWhenInitialize);
             }
 
             Value = 100;

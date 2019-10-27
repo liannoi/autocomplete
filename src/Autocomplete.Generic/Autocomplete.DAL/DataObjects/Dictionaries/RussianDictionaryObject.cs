@@ -15,25 +15,39 @@ namespace Autocomplete.DAL.DataObjects.Dictionaries
 
         public void Add(WordObject word)
         {
+            if (word is null)
+            {
+                throw new ArgumentNullException(nameof(word));
+            }
+
             Add(word.Word);
         }
 
         public void Add(string word)
         {
-            Words.Add(new WordObject
-            {
-                Id = LastId,
-                Word = word
-            });
+            Words
+                .ToList()
+                .Add(new WordObject
+                {
+                    Id = LastId,
+                    Word = word
+                });
         }
 
         public void AddRange(params WordObject[] words)
         {
-            Words.AddRange(words);
+            Words
+                .ToList()
+                .AddRange(words);
         }
 
         public void AddRange(IEnumerable<string> words)
         {
+            if (words is null)
+            {
+                throw new ArgumentNullException(nameof(words));
+            }
+
             foreach (string word in words)
             {
                 Add(word);
