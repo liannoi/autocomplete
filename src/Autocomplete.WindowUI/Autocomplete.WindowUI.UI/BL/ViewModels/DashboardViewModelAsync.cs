@@ -1,10 +1,10 @@
 ﻿using Autocomplete.DAL;
-using Autocomplete.DAL.DataObjects;
+using Autocomplete.DAL.DataObjects.Delegates;
 using Autocomplete.DAL.DataServices;
 using Autocomplete.WindowUI.UI.BL.BusinessObjects;
+using Autocomplete.WindowUI.UI.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Windows;
 
@@ -54,18 +54,20 @@ namespace Autocomplete.WindowUI.UI.BL.ViewModels
             AsyncResult asyncResult = iAsyncResult as AsyncResult;
             InitializeAsync.InitializeAsyncDelegate caller = asyncResult.AsyncDelegate as InitializeAsync.InitializeAsyncDelegate;
             caller.EndInvoke(iAsyncResult);
+
+            MessageBox.Show("Dictionary loaded successfully.");
         }
 
         private void AsyncFindSuggestions()
         {
             if (Value != 100)
             {
-                MessageBox.Show("asd");
+                MessageBox.Show("Wait for the dictionary to load.");
                 return;
             }
 
             FindSuggestionAsync.FindSuggestionAsyncDelegate findSuggestion = russianWordsSuggestionService.Find;
-            asyncFindSuggestions = findSuggestion.BeginInvoke(Buffer.Split().Last(), Consts.CountSuggestions, CallbackFindSuggestions, null);
+            asyncFindSuggestions = findSuggestion.BeginInvoke(StringOperation.LastWord(Buffer), Consts.CountSuggestions, CallbackFindSuggestions, null);
         }
 
         private void CallbackFindSuggestions(IAsyncResult iAsyncResult)

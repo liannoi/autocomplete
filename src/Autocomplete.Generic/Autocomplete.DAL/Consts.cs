@@ -2,8 +2,10 @@
 {
     public static class Consts
     {
-        public const string DictionariesDirectoryName = @"Dictionaries";
-        public const string RussianDictionaryFilePath = @"Dictionaries/ru-RU.dat";
-        public const int CountSuggestions = 3;
+        public static string DictionariesDirectoryName => @"Dictionaries";
+
+        public static string RussianDictionaryFilePath => @"Dictionaries/ru-RU.dat";
+
+        public static int CountSuggestions => 3;
     }
 }

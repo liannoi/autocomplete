@@ -1,6 +1,4 @@
-﻿using Autocomplete.DAL;
-using Autocomplete.DAL.DataObjects;
-using Autocomplete.DAL.DataObjects.Dictionaries;
+﻿using Autocomplete.DAL.DataObjects.Dictionaries;
 using Autocomplete.DAL.DataServices;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +14,7 @@ namespace Autocomplete.WindowUI.UI.BL.BusinessServices
             Suggestions = new List<string>();
         }
 
-        public void Find(string buffer, int count = Consts.CountSuggestions)
+        public void Find(string buffer, int count = 3)
         {
             Suggestions.Clear();
 

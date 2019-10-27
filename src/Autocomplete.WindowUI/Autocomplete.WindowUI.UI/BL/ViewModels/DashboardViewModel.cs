@@ -56,9 +56,7 @@ namespace Autocomplete.WindowUI.UI.BL.ViewModels
         private void ClearWindow()
         {
             Buffer = string.Empty;
-            FirstSuggestion.Word = null;
-            SecondSuggestion.Word = null;
-            ThirdSuggestion.Word = null;
+            ClearSugggestions();
         }
     }
 }

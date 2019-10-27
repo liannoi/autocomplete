@@ -1,5 +1,6 @@
 ﻿using Autocomplete.WindowUI.UI.BL.BusinessObjects;
 using Autocomplete.WindowUI.UI.BL.BusinessServices;
+using Autocomplete.WindowUI.UI.Helpers;
 using System.Windows.Input;
 
 namespace Autocomplete.WindowUI.UI.BL.ViewModels
@@ -9,25 +10,38 @@ namespace Autocomplete.WindowUI.UI.BL.ViewModels
         private readonly RussianWordsSuggestionService russianWordsSuggestionService;
 
         public SuggestionBusinessObject FirstSuggestion { get; set; }
-        
+
         public SuggestionBusinessObject SecondSuggestion { get; set; }
-        
+
         public SuggestionBusinessObject ThirdSuggestion { get; set; }
 
-        public ICommand FirstCorrectSuggestionCommand => MakeCommand(a => AsyncAddSuggestion(FirstSuggestion.Word));
+        public ICommand FirstCorrectSuggestionCommand => MakeCommand(a => AddCorrectSuggestion(FirstSuggestion.Word));
 
-        public ICommand SecondCorrectSuggestionCommand => MakeCommand(a => AsyncAddSuggestion(SecondSuggestion.Word));
+        public ICommand SecondCorrectSuggestionCommand => MakeCommand(a => AddCorrectSuggestion(SecondSuggestion.Word));
 
-        public ICommand ThirdCorrectSuggestionCommand => MakeCommand(a => AsyncAddSuggestion(ThirdSuggestion.Word));
+        public ICommand ThirdCorrectSuggestionCommand => MakeCommand(a => AddCorrectSuggestion(ThirdSuggestion.Word));
 
         private void AddSuggestion(string str)
         {
-            if(str == string.Empty)
+            if (string.IsNullOrWhiteSpace(str))
             {
                 return;
             }
 
-            Buffer = $"{Buffer} {str}";
+            Buffer = StringOperation.ReplaceLastOccurrence(Buffer, StringOperation.LastWord(Buffer), str);
+        }
+
+        private void ClearSugggestions()
+        {
+            FirstSuggestion.Word = null;
+            SecondSuggestion.Word = null;
+            ThirdSuggestion.Word = null;
+        }
+
+        private void AddCorrectSuggestion(string str)
+        {
+            AsyncAddSuggestion(str);
+            ClearSugggestions();
         }
     }
 }

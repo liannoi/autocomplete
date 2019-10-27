@@ -14,7 +14,7 @@ namespace Autocomplete.DAL.Helpers
             {
                 lines.Add(line.Trim());
             }
-            
+
             return lines;
         }
     }

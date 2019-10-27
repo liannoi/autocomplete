@@ -74,6 +74,7 @@
     <Compile Include="BL\ViewModels\DashboardViewModelAsync.cs" />
     <Compile Include="BL\ViewModels\DashboardViewModelSuggestions.cs" />
     <Compile Include="Helpers\Bindable.cs" />
+    <Compile Include="Helpers\StringOperation.cs" />
     <Compile Include="UI\Windows\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
