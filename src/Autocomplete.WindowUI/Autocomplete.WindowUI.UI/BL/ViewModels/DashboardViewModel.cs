@@ -15,6 +15,8 @@
 using Autocomplete.DAL;
 using Autocomplete.WindowUI.UI.BL.BusinessObjects;
 using Autocomplete.WindowUI.UI.BL.BusinessServices;
+using System.ComponentModel;
+using System.Linq;
 using System.Threading;
 using System.Windows.Input;
 
@@ -49,6 +51,21 @@ namespace Autocomplete.WindowUI.UI.BL.ViewModels
             ThirdSuggestion = new SuggestionBusinessObject();
             AsyncInitialize();
             AsyncIncrement();
+            PropertyChanged += DashboardViewModel_PropertyChanged;
+        }
+
+        private void DashboardViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.ToUpperInvariant() == nameof(Buffer).ToUpperInvariant())
+            {
+                BufferPropertyChange();
+            }
+        }
+
+        private void BufferPropertyChange()
+        {
+            ClearSugggestions();
+            AsyncFindSuggestions();
         }
 
         private bool IncrementValue()

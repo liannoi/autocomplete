@@ -4,6 +4,7 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3b0706a6d5ac4936bf5c5f6b3d579b3d)](https://www.codacy.com/manual/liannoi/autocomplete?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=liannoi/autocomplete&amp;utm_campaign=Badge_Grade)
 [![CodeFactor](https://www.codefactor.io/repository/github/liannoi/autocomplete/badge)](https://www.codefactor.io/repository/github/liannoi/autocomplete)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/liannoi/autocomplete/blob/master/LICENSE)
 
 [//]: # (Snapshot of the program)
 
@@ -29,7 +30,11 @@ the correctness of the proposed words).
 
 ## Build and Run
 
-**Standard way for solutions with WPF application.**
+Standard steps for solutions with a WPF application. Except that you need to correctly load the dictionary, for this you should do the following:
+
+- build a solution (so that the bin folder appears)
+- go to the bin / Debug folder and create the Dictionaries folder
+- in the root of the created folder, put the file ru-RU.dat (which is located in the res folder, the archive root folder)
 
 ## License
 
