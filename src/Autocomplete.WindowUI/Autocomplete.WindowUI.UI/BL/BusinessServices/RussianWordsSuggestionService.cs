@@ -31,7 +31,7 @@ namespace Autocomplete.WindowUI.UI.BL.BusinessServices
 
         public void Find(string buffer, int count)
         {
-            Suggestions.ToList().Clear();
+            Suggestions.Clear();
 
             IEnumerable<WordObject> collection = DataServices
                 .RussianDictionary

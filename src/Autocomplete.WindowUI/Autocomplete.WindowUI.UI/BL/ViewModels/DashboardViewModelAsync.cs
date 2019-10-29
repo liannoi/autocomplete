@@ -19,6 +19,7 @@ using Autocomplete.WindowUI.UI.BL.BusinessObjects;
 using Autocomplete.WindowUI.UI.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Windows;
 
@@ -81,7 +82,14 @@ namespace Autocomplete.WindowUI.UI.BL.ViewModels
             }
 
             FindSuggestionAsync.FindSuggestionAsyncDelegate findSuggestion = russianWordsSuggestionService.Find;
-            asyncFindSuggestions = findSuggestion.BeginInvoke(StringOperation.LastWord(Buffer), Consts.CountSuggestions, CallbackFindSuggestions, null);
+            try
+            {
+                asyncFindSuggestions = findSuggestion.BeginInvoke(StringOperation.LastWord(Buffer), Consts.CountSuggestions, CallbackFindSuggestions, null);
+            }
+            catch (ArgumentException)
+            {
+                // This block must be empty.
+            }
         }
 
         private void CallbackFindSuggestions(IAsyncResult iAsyncResult)
@@ -91,15 +99,26 @@ namespace Autocomplete.WindowUI.UI.BL.ViewModels
             caller.EndInvoke(iAsyncResult);
 
             List<string> collection = russianWordsSuggestionService.Suggestions;
-            try
+            List<SuggestionBusinessObject> suggestions = new List<SuggestionBusinessObject>
             {
-                FirstSuggestion.Word = collection[0];
-                SecondSuggestion.Word = collection[1];
-                ThirdSuggestion.Word = collection[2];
+                FirstSuggestion,
+                SecondSuggestion,
+                ThirdSuggestion
+            };
+
+            if (!collection.Any())
+            {
+                return;
             }
-            catch (InvalidOperationException)
+
+            int tmp = 3;
+            if (collection.Count < 3)
             {
-                // This block must be empty.
+                tmp = collection.Count;
+            }
+            for (int i = 0; i < tmp; ++i)
+            {
+                suggestions[i].Word = collection[i];
             }
         }
     }
